@@ -7,5 +7,5 @@ __pycache__/
 Code_TFM.Rproj
 /Data_collection_and_cleaning/raw_data/
 /Data_collection_and_cleaning/MS_Obesity_kids_sp.R
-.Rmd
-.pdf
+*.Rmd
+*.pdf
