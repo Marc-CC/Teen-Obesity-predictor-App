@@ -100,7 +100,7 @@ Weight <- patients %>%
     sex = as.numeric(paste(fct_recode(sex, "1" = "FEMENI", "0" = "MASCULI"))),
     ) %>%
   select(subjid, sex, agedays, WEIGHTKG, date_of_measurement) %>%
-  filter((agedays / 365.24) > 2) %>% 
+  filter((agedays / 365.24) >= 2) %>% 
   filter((agedays / 365.24) < 15) # Age between 2 and 14 years
 
 Height <- patients %>% 
@@ -112,7 +112,7 @@ Height <- patients %>%
     sex = as.numeric(paste(fct_recode(sex, "1" = "FEMENI", "0" = "MASCULI")))
     ) %>% 
   select(subjid, sex, agedays, HEIGHTCM, date_of_measurement) %>% 
-  filter((agedays / 365.24) > 2) %>% 
+  filter((agedays / 365.24) >= 2) %>% 
   filter((agedays / 365.24) < 15)
 
 
@@ -162,7 +162,7 @@ PSIA_weight <- patients %>%
     sex = as.numeric(paste(fct_recode(sex, "1" = "FEMENI", "0" = "MASCULI")))
     ) %>% 
   select(subjid, sex, agedays, WEIGHTKG, date_of_measurement) %>% 
-  filter((agedays / 365.24) > 2) %>% 
+  filter((agedays / 365.24) >= 2) %>% 
   filter((agedays / 365.24) < 15)
 
 PSIA_height <- patients %>% 
@@ -174,7 +174,7 @@ PSIA_height <- patients %>%
     sex = as.numeric(paste(fct_recode(sex, "1" = "FEMENI", "0" = "MASCULI"))),
     ) %>% 
   select(subjid, sex, agedays, HEIGHTCM, date_of_measurement) %>% 
-  filter((agedays / 365.24) > 2) %>% 
+  filter((agedays / 365.24) >= 2) %>% 
   filter((agedays / 365.24) < 15)
 
 
@@ -272,11 +272,9 @@ kbl(cleaned_data %>%
 
 
 ## Filter included data ----
-# Age: 2-15 years; Time period: 2011-2017; Plausible growth values
+# Age: 2-15 years; Plausible growth values
 included_data <- cleaned_data %>% 
-  filter(gcr_result == "Include") %>% 
-  filter(date_of_measurement < as.Date("2018-01-01") & 
-           date_of_measurement > as.Date("2010-12-31"))
+  filter(gcr_result == "Include")
 
 # At least two visits with the same day recorded height and weight
 included_data <- included_data %>% 
