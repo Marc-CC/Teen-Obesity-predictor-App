@@ -167,7 +167,7 @@ PSIA_weight <- patients %>%
 
 PSIA_height <- patients %>% 
   inner_join(in_PSIA_height, by = "subjid") %>% 
-  filter(year(date_of_measurement) >= 2018) %>% 
+  filter(year(date_of_measurement) >= 2010) %>% 
   filter(year(date_of_measurement) < 2023) %>% 
   mutate(
     agedays = as.numeric(round((date_of_measurement - date_of_birth))),
