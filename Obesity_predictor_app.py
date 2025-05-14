@@ -18,22 +18,17 @@ st.subheader("Enter available Height (cm) and Weight (kg) data between ages 2 th
 if "child_info" not in st.session_state:
     st.session_state.child_info = pd.DataFrame(columns=["Age", "Height_cm", "Weight_kg"])
 
-# Create form
+# Create select box
 if "child_sex" not in st.session_state:
     st.session_state.child_sex = pd.DataFrame(columns=["Sex"])
 
-# Form for one age only per submission
-with st.form(key="child_form"):
-    sex = st.selectbox("Enter child sex:", ["Male", "Female"])
-
-    submitted = st.form_submit_button("Submit Entry")
-
-    if submitted:
-        new_row = pd.DataFrame({
-            "Sex": [sex] * 12
-            })
-        st.session_state.child_sex = pd.concat([st.session_state.child_sex, new_row], ignore_index=True)
-        st.success(f"Entry added")
+# Selectbox for one age only per submission
+sex = st.selectbox("Enter child sex:", ["Unspecified", "Male", "Female"], index=0)
+sex_if_default = sex if sex != "Unspecified" else "Male"
+sex_df = pd.DataFrame({
+        "Sex": [sex_if_default] *12
+        })
+st.session_state.child_sex = sex_df
 
 # Create st.dataframe
 Age = list(range(2, 14))
