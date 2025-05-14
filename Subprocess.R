@@ -1,9 +1,11 @@
 # Subprocess for streamlit app ----
-library(jsonlite)
-library(growthcleanr)
-library(anthro)
-library(anthroplus)
-library(tidyverse)
+suppressWarnings({
+
+require(jsonlite, quietly = TRUE)
+require(growthcleanr, quietly = TRUE)
+require(anthro, quietly = TRUE)
+require(anthroplus, quietly = TRUE)
+require(tidyverse, quietly = TRUE)
 
 # Load inputs ----
 input <- fromJSON("child_data.json")
@@ -108,3 +110,5 @@ All$stratify <- 0
 
 # Export ----
 write(toJSON(All, auto_unbox = TRUE, na = "null"), "child_data_processed.json")
+
+})

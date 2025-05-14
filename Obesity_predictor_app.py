@@ -47,19 +47,28 @@ edited_child_df = st.data_editor(child_df,
                                    "Age": st.column_config.NumberColumn(disabled=True)
                                    })
 
-# Convert df types
-edited_child_df["Age"] = edited_child_df["Age"].astype(int)
-edited_child_df["Height_cm"] = edited_child_df["Height_cm"].astype(float)
-edited_child_df["Weight_kg"] = edited_child_df["Weight_kg"].astype(float)
-
 # Fill child_info with edited data
 st.session_state.child_info = edited_child_df.copy()
 
-# Add Download button and combine data into single df
+# Combine data into single df
 combined_data = pd.concat([st.session_state.child_sex, st.session_state.child_info], axis=1)
+
+# Convert empty cells to None
+def convert_to_none(df):
+    return df.applymap(lambda x: None if isinstance(x, str) and x.strip() == "" else x)
+
+combined_data = convert_to_none(combined_data)
+
+# Convert df types
+combined_data["Age"] = combined_data["Age"].astype(int)
+combined_data["Height_cm"] = combined_data["Height_cm"].astype(float)
+combined_data["Weight_kg"] = combined_data["Weight_kg"].astype(float)
+
+# Add download button as csv
 csv = combined_data.to_csv(index=False)
 st.write("Download child data as CSV file (optional to keep your data)")
 st.download_button("Download", data=csv, file_name="child_data.csv", mime="text/csv")
+
 
 st.header("Zbmi Prediction at 14 years old")
 if st.button("Predict"):
