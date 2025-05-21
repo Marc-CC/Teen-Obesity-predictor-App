@@ -8,7 +8,7 @@ from tensorflow.keras.models import load_model
 # Load model predictor
 @st.cache_resource
 def load_model_once():
-    return load_model("GRU_obesity_zbmi_predictor")
+    return load_model("LSTM_obesity_zbmi_predictor")
 model = load_model_once()
 
 # Define functions for later use
