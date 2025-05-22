@@ -14,7 +14,7 @@ model = load_model_once()
 # Define functions for later use
 # Convert empty cells to None
 def convert_to_none(df):
-    return df.applymap(lambda x: None if isinstance(x, str) and x.strip() == "" else x)
+    return df.apply(lambda col: col.map(lambda x: None if isinstance(x, str) and x.strip() == "" else x))
 
 # Process into array
 def preprocess_to_3d_array(df, measure_cols, sex_cols, real_col):

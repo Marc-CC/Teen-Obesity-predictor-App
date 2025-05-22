@@ -57,8 +57,6 @@ growthclean <- growthclean %>%
   pivot_wider(names_from = param, values_from = measurement) %>%
   filter(!is.na(HEIGHTCM) & !is.na(WEIGHTKG))
 
-growthclean$Sex <- ifelse(growthclean$Sex == "F", 1, 0)
-
 # Split by anthro and anthroplus ages
 anthro <- growthclean[growthclean$Age < (5 * 365.25), ]
 anthroplus <- growthclean[growthclean$Age >= (5 * 365.25), ]
@@ -85,6 +83,8 @@ anthroplus$Age <- original_age_anthroplus
 All <- bind_rows(anthro, anthroplus) %>% 
   select(Sex, Age, zbmi) %>%
   mutate(Age = Age / 365.25)
+
+All$Sex <- ifelse(All$Sex == "F", 1, 0)
 
 # Prepare for model ----
 All <- pivot_wider(All, names_from = Age,
