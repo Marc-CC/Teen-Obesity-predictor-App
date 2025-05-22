@@ -1,10 +1,14 @@
 # Subprocess for streamlit app ----
 suppressWarnings({
 
+packages <- c("growthcleanr", "anthro", "anthroplus")
+for (pkg in packages) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg)
+  }
+  library(pkg, character.only = TRUE)
+}
 require(jsonlite, quietly = TRUE)
-require(growthcleanr, quietly = TRUE)
-require(anthro, quietly = TRUE)
-require(anthroplus, quietly = TRUE)
 require(dplyr, quietly = TRUE)
 require(tidyr, quietly = TRUE)
 
