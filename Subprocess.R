@@ -5,7 +5,8 @@ require(jsonlite, quietly = TRUE)
 require(growthcleanr, quietly = TRUE)
 require(anthro, quietly = TRUE)
 require(anthroplus, quietly = TRUE)
-require(tidyverse, quietly = TRUE)
+require(dplyr, quietly = TRUE)
+require(tidyr, quietly = TRUE)
 
 # Load inputs ----
 input <- fromJSON("child_data.json")
