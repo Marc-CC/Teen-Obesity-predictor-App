@@ -7,5 +7,10 @@ __pycache__/
 Code_TFM.Rproj
 /Data_collection_and_cleaning/raw_data/
 /Data_collection_and_cleaning/MS_Obesity_kids_sp.R
+/Data_collection_and_cleaning/processed_data/
 *.Rmd
 *.pdf
+*.json
+ML_models_tfm.ipynb
+old_models.py
+streamlit_app_code.txt

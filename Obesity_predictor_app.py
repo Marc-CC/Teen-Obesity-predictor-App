@@ -175,3 +175,10 @@ if st.button("Predict"):
 
     st.metric(label="ZBMI Prediction", value=f"{zbmi_prediction[0][0]:.3f}")
     st.metric(label="Label predicted", value=f"{zbmi_label[0]}")
+
+    if sex_if_default == "Female":
+        st.image("Zscores_WHO/bmifa-girls-z-5-19-labels.png", caption="Reference zBMI data")
+    else:
+        st.image("Zscores_WHO/bmifa-boys-z-5-19-labels.png", caption="Reference zBMI data")
+    
+    st.markdown("Check the [World Health Organisation](https://www.who.int/tools/growth-reference-data-for-5to19-years/indicators/bmi-for-age) page for more information.")
