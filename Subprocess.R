@@ -1,16 +1,13 @@
 # Subprocess for streamlit app ----
 suppressWarnings({
 
-packages <- c("growthcleanr", "anthro", "anthroplus")
-for (pkg in packages) {
-  if (!requireNamespace(pkg, quietly = TRUE)) {
-    install.packages(pkg)
-  }
-  library(pkg, character.only = TRUE)
-}
-require(jsonlite, quietly = TRUE)
-require(dplyr, quietly = TRUE)
-require(tidyr, quietly = TRUE)
+supressMessages({
+  install.packages('pak', repos = 'https://r2u.stat.illinois.edu/ubuntu')
+  pak::pkg_install(c("growthcleanr", "anthro", "anthroplus"))
+  library(jsonlite, quietly = TRUE)
+  library(dplyr, quietly = TRUE)
+  library(tidyr, quietly = TRUE)
+})
 
 # Load inputs ----
 input <- fromJSON("child_data.json")
