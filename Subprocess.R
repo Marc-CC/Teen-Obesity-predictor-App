@@ -2,8 +2,11 @@
 suppressWarnings({
 
 supressMessages({
-  install.packages('pak', repos = 'https://r2u.stat.illinois.edu/ubuntu')
-  pak::pkg_install(c("growthcleanr", "anthro", "anthroplus"))
+  install.packages(c("jsonlite", "dplyr", "tidyr", "growthcleanr", "anthro", "anthroplus"),
+  repos = "https://cran.r-project.org")
+  library(growthcleanr, quietly = TRUE)
+  library(anthro, quietly = TRUE)
+  library(anthroplus, quietly = TRUE)
   library(jsonlite, quietly = TRUE)
   library(dplyr, quietly = TRUE)
   library(tidyr, quietly = TRUE)
