@@ -1,7 +1,7 @@
 # Subprocess for streamlit app ----
 suppressWarnings({
 
-supressMessages({
+suppressMessages({
   library(growthcleanr, quietly = TRUE)
   library(anthro, quietly = TRUE)
   library(anthroplus, quietly = TRUE)
