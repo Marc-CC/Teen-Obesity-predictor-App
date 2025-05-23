@@ -1,5 +1,0 @@
-r-base
-r-base-dev
-r-cran-jsonlite
-r-cran-dplyr
-r-cran-tidyr

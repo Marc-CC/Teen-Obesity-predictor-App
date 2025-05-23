@@ -2,8 +2,6 @@
 suppressWarnings({
 
 supressMessages({
-  install.packages(c("jsonlite", "dplyr", "tidyr", "growthcleanr", "anthro", "anthroplus"),
-  repos = "https://cran.r-project.org")
   library(growthcleanr, quietly = TRUE)
   library(anthro, quietly = TRUE)
   library(anthroplus, quietly = TRUE)
