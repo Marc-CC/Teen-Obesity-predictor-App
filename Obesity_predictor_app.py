@@ -105,6 +105,18 @@ else:
         "Weight_kg": [None] * 12
     })
 
+child_data_example = pd.read_csv("example_child_data.csv")
+
+# Convert DataFrame to CSV (in memory)
+example_child_data = child_data_example.to_csv(index=False).encode('utf-8')
+
+# Create a download button
+st.download_button(
+    label="📥 Download Example CSV",
+    data=example_child_data,
+    file_name='example_child_data.csv',
+    mime='text/csv'
+)
 
 # Selectbox for sex,
 sex = st.selectbox("Enter child sex:", ["Unspecified", "Male", "Female"], index=0)
